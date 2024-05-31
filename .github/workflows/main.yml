@@ -6,6 +6,9 @@ on:
     # 定期実行する時間
     - cron: "0 12 * * *"
 
+permissions:
+  contents: write # リポジトリのコンテンツに書き込み権限を付与
+
 jobs:
   build:
     # Ubuntuの最新版環境内で処理を実行することを指定
@@ -31,8 +34,8 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git config --global user.name 'Kishi Masahiro'
-          git config --global user.email 'ksmshr1988@gmail.com'
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
           git add DB/room_test.db
           git commit -m 'Update database with latest scraped data'
           git push
